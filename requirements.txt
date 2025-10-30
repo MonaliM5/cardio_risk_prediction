@@ -1,13 +1,12 @@
-pandas
+# Core data science libraries
 numpy
-scikit-learn
+pandas
 matplotlib
 seaborn
+scikit-learn
 xgboost
-shap
 joblib
-imbalanced-learn
-jupyter / colab
-notebook
-nbconvert
-papermill
+shap
+
+# Optional visualization / notebook tools
+jupyter
