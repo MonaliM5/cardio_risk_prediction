@@ -20,6 +20,6 @@ jobs:
           pip install -r requirements.txt
       - name: Execute modeling notebook
         run: |
-          jupyter nbconvert --to notebook --execute notebooks/03_modeling_and_eval.ipynb \
-            --output notebooks/03_modeling_and_eval_executed.ipynb \
+          jupyter nbconvert --to notebook --execute notebooks/Cardiovascular_Risk_Prediction.ipynb \
+            --output notebooks/Cardiovascular_Risk_Prediction.ipynb \
             --ExecutePreprocessor.timeout=900
