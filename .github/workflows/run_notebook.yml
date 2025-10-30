@@ -1,25 +1,44 @@
-name: Run Cardiovascular Notebook
+Run jupyter nbconvert --to notebook --execute notebooks/03_modeling_and_eval.ipynb \
+[NbConvertApp] Converting notebook notebooks/03_modeling_and_eval.ipynb to notebook
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbformat/reader.py", line 19, in parse_json
+    nb_dict = json.loads(s, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
+The above exception was the direct cause of the following exception:
 
-jobs:
-  run-notebook:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Execute modeling notebook
-        run: |
-          jupyter nbconvert --to notebook --execute notebooks/Cardiovascular_Risk_Prediction.ipynb \
-            --output notebooks/Cardiovascular_Risk_Prediction.ipynb \
-            --ExecutePreprocessor.timeout=900
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/bin/jupyter-nbconvert", line 7, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 221, in from_file
+    nbformat.read(file_stream, as_version=4), resources=resources, **kw
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbformat/__init__.py", line 174, in read
+    return reads(buf, as_version, capture_validation_error, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbformat/__init__.py", line 92, in reads
+    nb = reader.reads(s, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbformat/reader.py", line 75, in reads
+    nb_dict = parse_json(s, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbformat/reader.py", line 25, in parse_json
+    raise NotJSONError(message) from e
+nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '\n'
+Error: Process completed with exit code 1.
